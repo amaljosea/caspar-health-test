@@ -1,10 +1,11 @@
-import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <main className="">
       <div className="">
-        <p>Caspar Health</p>
+        <p>Home</p>
+        <Link href="/detail/22">Detail</Link>
       </div>
     </main>
   )
