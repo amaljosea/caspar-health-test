@@ -1,3 +1,4 @@
+import { simpleclassName } from "@/constants";
 import { ReactNode } from "react";
 
 type LayoutProps = {
@@ -9,12 +10,12 @@ type LayoutProps = {
 export const Layout = ({ children, heading, nav }: LayoutProps) => {
   return (
     <>
-      <header className="font-black text-xl border-solid border-2 border-indigo-600 m-4">
+      <header className={simpleclassName}>
         <h1>{heading}</h1>
       </header>
-      {nav && <nav>{nav}</nav>}
-      <main>{children}</main>
-      <footer>copywright</footer>
+      {nav && <nav className={simpleclassName}>{nav}</nav>}
+      <main className={simpleclassName}>{children}</main>
+      <footer className={simpleclassName}>Copywright Amal 2023</footer>
     </>
   );
 };
