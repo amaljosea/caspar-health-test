@@ -3,8 +3,8 @@ import { PatientContext } from "@/context/PatientContext";
 import { Patient } from "..";
 
 export type FilterControls = {
-  sex: string;
-  setSex: (value: string) => void;
+  gender: string;
+  setGender: (value: string) => void;
   age: string;
   setAge: (value: string) => void;
   search: string;
@@ -12,7 +12,7 @@ export type FilterControls = {
 };
 
 export const useFilteredPatients = () => {
-  const [sex, setSex] = useState("any");
+  const [gender, setGender] = useState("any");
   const [age, setAge] = useState("any");
   const [search, setSearch] = useState("");
   const { patients } = useContext(PatientContext);
@@ -22,14 +22,16 @@ export const useFilteredPatients = () => {
       search === "" ||
       patient.first_name.toLowerCase().includes(search.toLowerCase());
 
-    return searchFilter;
+    const genderFilter = gender === "any" || patient.gender === gender;
+
+    return searchFilter && genderFilter;
   });
 
   return {
     patients: filteredPatients,
     filterControls: {
-      sex,
-      setSex,
+      gender,
+      setGender,
       age,
       setAge,
       search,

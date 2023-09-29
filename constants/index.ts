@@ -1,9 +1,9 @@
 export const simpleclassName = "custom-div";
 
-export const sexOptions = [
+export const genderOptions = [
   { label: "Any", value: "any" },
-  { label: "Male", value: "male" },
-  { label: "Female", value: "female" },
+  { label: "Male", value: "Male" },
+  { label: "Female", value: "Female" },
 ];
 
 export const ageOptions = [

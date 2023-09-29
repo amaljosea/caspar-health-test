@@ -1,4 +1,4 @@
-import { ageOptions, sexOptions, simpleclassName } from "@/constants";
+import { ageOptions, genderOptions, simpleclassName } from "@/constants";
 import { Select } from "./Select";
 import { FilterControls } from "@/hooks/useFilteredPatients";
 
@@ -7,7 +7,7 @@ type FilterProps = {
 };
 
 export const Filter = ({ filterControls }: FilterProps) => {
-  const { sex, setSex, age, setAge, search, setSearch } = filterControls;
+  const { gender, setGender, age, setAge, search, setSearch } = filterControls;
   return (
     <div className={simpleclassName}>
       <input
@@ -18,8 +18,13 @@ export const Filter = ({ filterControls }: FilterProps) => {
         }}
         className={simpleclassName}
       />
-      <Select label="Sex" value={sex} onChange={setSex} options={sexOptions} />
-      <Select label="Sex" value={age} onChange={setAge} options={ageOptions} />
+      <Select
+        label="Gender"
+        value={gender}
+        onChange={setGender}
+        options={genderOptions}
+      />
+      <Select label="Age" value={age} onChange={setAge} options={ageOptions} />
     </div>
   );
 };
