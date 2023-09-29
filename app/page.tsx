@@ -2,10 +2,10 @@
 import { Filter } from "@/components/Filter";
 import { Layout } from "@/components/Layout";
 import { PatientCard } from "@/components/PatientCard";
-import { usePatients } from "@/hooks/usePatients";
+import { useFilteredPatients } from "@/hooks/useFilteredPatients";
 
 export default function Home() {
-  const { patients, filterControls } = usePatients();
+  const { patients, filterControls } = useFilteredPatients();
 
   return (
     <Layout heading="Home">

@@ -1,4 +1,4 @@
-import { Dispatch, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
 
 export type FilterControls = {
@@ -10,11 +10,12 @@ export type FilterControls = {
   setSearch: (value: string) => void;
 };
 
-export const usePatients = () => {
+export const useFilteredPatients = () => {
   const [sex, setSex] = useState("any");
   const [age, setAge] = useState("any");
   const [search, setSearch] = useState("");
   const { patients } = useContext(PatientContext);
+
   return {
     patients,
     filterControls: {

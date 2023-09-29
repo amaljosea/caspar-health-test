@@ -1,6 +1,6 @@
 import { ageOptions, sexOptions, simpleclassName } from "@/constants";
 import { Select } from "./Select";
-import { FilterControls } from "@/hooks/usePatients";
+import { FilterControls } from "@/hooks/useFilteredPatients";
 
 type FilterProps = {
   filterControls: FilterControls;
