@@ -1,4 +1,4 @@
-export const simpleclassName = "border-solid border-2 border-indigo-600 m-4";
+export const simpleclassName = "custom-div";
 
 export const sexOptions = [
   { label: "Any", value: "any" },
