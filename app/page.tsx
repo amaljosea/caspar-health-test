@@ -1,3 +1,4 @@
+"use client";
 import { Filter } from "@/components/Filter";
 import { Layout } from "@/components/Layout";
 import { PatientCard } from "@/components/PatientCard";

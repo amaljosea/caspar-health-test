@@ -1,5 +1,3 @@
-"use client";
-
 import { ageOptions, sexOptions, simpleclassName } from "@/constants";
 import { useState } from "react";
 import { Select } from "./Select";

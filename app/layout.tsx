@@ -1,5 +1,6 @@
-import "./globals.css";
+import { PatientContextProvider } from "@/context/PatientContext";
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Patient management",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <PatientContextProvider>{children}</PatientContextProvider>
+      </body>
     </html>
   );
 }
