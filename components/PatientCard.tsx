@@ -12,6 +12,8 @@ export const PatientCard = ({ patient }: PatientCardProps) => {
       <li className={simpleclassName}>
         <p>{patient.patient_id}</p>
         <p>{patient.first_name}</p>
+        <p>{patient.gender}</p>
+        <p>{patient.age}</p>
       </li>
     </Link>
   );

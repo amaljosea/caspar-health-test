@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
-import { Patient } from "..";
 
 export type FilterControls = {
   gender: string;
@@ -9,6 +8,22 @@ export type FilterControls = {
   setAge: (value: string) => void;
   search: string;
   setSearch: (value: string) => void;
+};
+
+const checkAgeFilter = (age: number, ageFilter: string) => {
+  if (ageFilter === "any") {
+    return true;
+  }
+  if (ageFilter === "18to20") {
+    return age >= 18 && age <= 20;
+  }
+  if (ageFilter === "31to45") {
+    return age >= 31 && age <= 45;
+  }
+  if (ageFilter === "above45") {
+    return age > 45;
+  }
+  return false;
 };
 
 export const useFilteredPatients = () => {
@@ -24,7 +39,9 @@ export const useFilteredPatients = () => {
 
     const genderFilter = gender === "any" || patient.gender === gender;
 
-    return searchFilter && genderFilter;
+    const ageFilter = checkAgeFilter(patient.age, age);
+
+    return searchFilter && genderFilter && ageFilter;
   });
 
   return {
