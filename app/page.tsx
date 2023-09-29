@@ -5,11 +5,11 @@ import { PatientCard } from "@/components/PatientCard";
 import { usePatients } from "@/hooks/usePatients";
 
 export default function Home() {
-  const { patients } = usePatients();
+  const { patients, filterControls } = usePatients();
 
   return (
     <Layout heading="Home">
-      <Filter />
+      <Filter filterControls={filterControls} />
       <ul>
         {patients.map((patient) => (
           <PatientCard key={patient.patient_id} patient={patient} />

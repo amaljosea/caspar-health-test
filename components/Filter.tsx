@@ -1,14 +1,23 @@
 import { ageOptions, sexOptions, simpleclassName } from "@/constants";
-import { useState } from "react";
 import { Select } from "./Select";
+import { FilterControls } from "@/hooks/usePatients";
 
-export const Filter = () => {
-  const [sex, setSex] = useState("any");
-  const [age, setAge] = useState("any");
+type FilterProps = {
+  filterControls: FilterControls;
+};
 
+export const Filter = ({ filterControls }: FilterProps) => {
+  const { sex, setSex, age, setAge, search, setSearch } = filterControls;
   return (
     <div className={simpleclassName}>
-      <input placeholder="Search" className={simpleclassName} />
+      <input
+        placeholder="Search"
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+        className={simpleclassName}
+      />
       <Select label="Sex" value={sex} onChange={setSex} options={sexOptions} />
       <Select label="Sex" value={age} onChange={setAge} options={ageOptions} />
     </div>
