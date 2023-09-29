@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
+import { Patient } from "..";
 
 export type FilterControls = {
   sex: string;
@@ -16,8 +17,16 @@ export const useFilteredPatients = () => {
   const [search, setSearch] = useState("");
   const { patients } = useContext(PatientContext);
 
+  const filteredPatients = patients.filter((patient) => {
+    const searchFilter =
+      search === "" ||
+      patient.first_name.toLowerCase().includes(search.toLowerCase());
+
+    return searchFilter;
+  });
+
   return {
-    patients,
+    patients: filteredPatients,
     filterControls: {
       sex,
       setSex,
