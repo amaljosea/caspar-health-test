@@ -1,17 +1,17 @@
 import { Patient } from "..";
 
-export type GenderValue = "any" | "Male" | "Female";
+export type GenderFilterValue = "any" | "Male" | "Female";
 
 type GenderFilterOption = {
   label: string;
-  value: GenderValue;
+  value: GenderFilterValue;
 };
 
-export type AgeValue = "any" | "18to20" | "31to45" | "above45";
+export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
 
 type AgeFilterOption = {
   label: string;
-  value: AgeValue;
+  value: AgeFilterValue;
 };
 
 export const genderFilterOptions: GenderFilterOption[] = [
@@ -27,7 +27,7 @@ export const ageFilterOptions: AgeFilterOption[] = [
   { label: " > 45", value: "above45" },
 ];
 
-const checkAgeFilter = (age: number, ageFilter: string) => {
+const ageFilter = (age: number, ageFilter: AgeFilterValue) => {
   if (ageFilter === "any") {
     return true;
   }
@@ -46,8 +46,8 @@ const checkAgeFilter = (age: number, ageFilter: string) => {
 type GetFilteredPatients = {
   patients: Patient[];
   filters: {
-    gender: string;
-    age: string;
+    gender: GenderFilterValue;
+    age: AgeFilterValue;
     search: string;
   };
 };
@@ -61,7 +61,7 @@ export const getFilteredPatients = ({
       search === "" ||
       patient.first_name.toLowerCase().includes(search.toLowerCase());
     const isGenderFilterPassed = gender === "any" || patient.gender === gender;
-    const isAgeFilterPassed = checkAgeFilter(patient.age, age);
+    const isAgeFilterPassed = ageFilter(patient.age, age);
 
     return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
   });

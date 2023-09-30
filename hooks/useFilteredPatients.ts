@@ -1,19 +1,23 @@
 import { useContext, useMemo, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
-import { AgeValue, GenderValue, getFilteredPatients } from "@/utils/filter";
+import {
+  AgeFilterValue,
+  GenderFilterValue,
+  getFilteredPatients,
+} from "@/utils/filter";
 
 export type FilterControls = {
-  gender: GenderValue;
-  setGender: (value: GenderValue) => void;
-  age: AgeValue;
-  setAge: (value: AgeValue) => void;
+  gender: GenderFilterValue;
+  setGender: (value: GenderFilterValue) => void;
+  age: AgeFilterValue;
+  setAge: (value: AgeFilterValue) => void;
   search: string;
   setSearch: (value: string) => void;
 };
 
 export const useFilteredPatients = () => {
-  const [gender, setGender] = useState<GenderValue>("any");
-  const [age, setAge] = useState<AgeValue>("any");
+  const [gender, setGender] = useState<GenderFilterValue>("any");
+  const [age, setAge] = useState<AgeFilterValue>("any");
   const [search, setSearch] = useState("");
   const { patients } = useContext(PatientContext);
 

@@ -4,7 +4,7 @@ import { FilterControls } from "@/hooks/useFilteredPatients";
 import {
   ageFilterOptions,
   genderFilterOptions,
-  GenderValue,
+  GenderFilterValue,
 } from "@/utils/filter";
 
 type FilterProps = {
@@ -23,7 +23,7 @@ export const Filter = ({ filterControls }: FilterProps) => {
         }}
         className={simpleclassName}
       />
-      <Select<GenderValue>
+      <Select<GenderFilterValue>
         label="Gender"
         value={gender}
         onChange={setGender}
