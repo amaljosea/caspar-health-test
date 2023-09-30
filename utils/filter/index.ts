@@ -1,4 +1,4 @@
-import { Patient } from "..";
+import { Patient } from "@/index";
 
 export type GenderFilterValue = "any" | "Male" | "Female";
 
