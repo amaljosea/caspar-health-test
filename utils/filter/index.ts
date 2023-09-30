@@ -12,26 +12,40 @@ export type AgeFilterOption = {
   value: AgeFilterValue;
 };
 
-export const checkAgeFilter = (age: number, ageFilter: AgeFilterValue) => {
-  if (ageFilter === "any") {
+export const checkAgeFilter = ({
+  value,
+  filter,
+}: {
+  value: number;
+  filter: AgeFilterValue;
+}) => {
+  if (filter === "any") {
     return true;
   }
-  if (ageFilter === "18to20") {
-    return age >= 18 && age <= 20;
+  if (filter === "18to20") {
+    return value >= 18 && value <= 20;
   }
-  if (ageFilter === "31to45") {
-    return age >= 31 && age <= 45;
+  if (filter === "31to45") {
+    return value >= 31 && value <= 45;
   }
-  if (ageFilter === "above45") {
-    return age > 45;
+  if (filter === "above45") {
+    return value > 45;
   }
   return false;
 };
 
-export const checkGenderFilter = (
-  gender: GenderFilterValue,
-  ageFilter: GenderFilterValue
-) => ageFilter === "any" || gender === ageFilter;
+export const checkGenderFilter = ({
+  value,
+  filter,
+}: {
+  value: GenderFilterValue;
+  filter: GenderFilterValue;
+}) => filter === "any" || value === filter;
 
-export const checkSearchFilter = (value: string, filter: string) =>
-  filter === "" || value.toLowerCase().includes(filter.toLowerCase());
+export const checkSearchFilter = ({
+  value,
+  filter,
+}: {
+  value: string;
+  filter: string;
+}) => filter === "" || value.toLowerCase().includes(filter.toLowerCase());

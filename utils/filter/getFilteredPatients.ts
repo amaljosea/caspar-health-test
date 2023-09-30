@@ -21,19 +21,19 @@ export const getFilteredPatients = ({
   filters,
 }: GetFilteredPatients) => {
   const filteredPatients = patients.filter((patient) => {
-    const isSearchFilterPassed = checkSearchFilter(
-      patient.first_name,
-      filters.search
-    );
+    const isSearchFilterPassed = checkSearchFilter({
+      filter: filters.search,
+      value: patient.first_name,
+    });
 
-    filters.search === "" ||
-      patient.first_name.toLowerCase().includes(filters.search.toLowerCase());
-
-    const isGenderFilterPassed = checkGenderFilter(
-      patient.gender,
-      filters.gender
-    );
-    const isAgeFilterPassed = checkAgeFilter(patient.age, filters.age);
+    const isGenderFilterPassed = checkGenderFilter({
+      filter: filters.gender,
+      value: patient.gender,
+    });
+    const isAgeFilterPassed = checkAgeFilter({
+      filter: filters.age,
+      value: patient.age,
+    });
 
     return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
   });
