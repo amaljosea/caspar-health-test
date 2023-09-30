@@ -1,22 +1,28 @@
-import { useState } from "react";
-
-type Option = {
+type Option<ValueType> = {
   label: string;
-  value: string;
+  value: ValueType;
 };
 
-type SelectProps = {
-  options: Option[];
-  value: string;
-  onChange: (value: string) => void;
+type SelectProps<ValueType> = {
+  options: Option<ValueType>[];
+  value: ValueType;
+  onChange: (value: ValueType) => void;
   label: string;
 };
 
-export const Select = ({ options, value, onChange, label }: SelectProps) => {
+export const Select = <ValueType extends string>({
+  options,
+  value,
+  onChange,
+  label,
+}: SelectProps<ValueType>) => {
   return (
     <label>
       {label}
-      <select value={value} onChange={(e) => onChange(e.target.value)}>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value as ValueType)}
+      >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

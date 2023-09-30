@@ -3,10 +3,10 @@ import { PatientContext } from "@/context/PatientContext";
 import { AgeValue, GenderValue, getFilteredPatients } from "@/utils/filter";
 
 export type FilterControls = {
-  gender: string;
-  setGender: (value: string) => void;
-  age: string;
-  setAge: (value: string) => void;
+  gender: GenderValue;
+  setGender: (value: GenderValue) => void;
+  age: AgeValue;
+  setAge: (value: AgeValue) => void;
   search: string;
   setSearch: (value: string) => void;
 };
