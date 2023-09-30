@@ -25,7 +25,7 @@ const testConfig = [
 ];
 
 describe("checkAgeFilter", () => {
-  it("should return true", () => {
+  it("checkAgeFilter should work as expected for all the edge cases", () => {
     testConfig.forEach((config) => {
       expect(
         checkAgeFilter({
