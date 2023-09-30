@@ -1,11 +1,11 @@
-import { simpleclassName } from "@/constants";
-import { Select } from "./Select";
-import { FilterControls } from "@/hooks/useFilteredPatients";
 import {
   ageFilterOptions,
   genderFilterOptions,
-  GenderFilterValue,
-} from "@/utils/filter";
+  simpleclassName,
+} from "@/constants";
+import { Select } from "./Select";
+import { FilterControls } from "@/hooks/useFilteredPatients";
+import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 
 type FilterProps = {
   filterControls: FilterControls;
@@ -29,7 +29,7 @@ export const Filter = ({ filterControls }: FilterProps) => {
         onChange={setGender}
         options={genderFilterOptions}
       />
-      <Select
+      <Select<AgeFilterValue>
         label="Age"
         value={age}
         onChange={setAge}

@@ -2,32 +2,19 @@ import { Patient } from "@/index";
 
 export type GenderFilterValue = "any" | "Male" | "Female";
 
-type GenderFilterOption = {
+export type GenderFilterOption = {
   label: string;
   value: GenderFilterValue;
 };
 
 export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
 
-type AgeFilterOption = {
+export type AgeFilterOption = {
   label: string;
   value: AgeFilterValue;
 };
 
-export const genderFilterOptions: GenderFilterOption[] = [
-  { label: "Any", value: "any" },
-  { label: "Male", value: "Male" },
-  { label: "Female", value: "Female" },
-];
-
-export const ageFilterOptions: AgeFilterOption[] = [
-  { label: "Any", value: "any" },
-  { label: "18 - 30", value: "18to20" },
-  { label: "31 - 45", value: "31to45" },
-  { label: " > 45", value: "above45" },
-];
-
-const checkAgeFilter = (age: number, ageFilter: AgeFilterValue) => {
+export const checkAgeFilter = (age: number, ageFilter: AgeFilterValue) => {
   if (ageFilter === "any") {
     return true;
   }
@@ -43,44 +30,10 @@ const checkAgeFilter = (age: number, ageFilter: AgeFilterValue) => {
   return false;
 };
 
-const checkGenderFilter = (
+export const checkGenderFilter = (
   gender: GenderFilterValue,
   ageFilter: GenderFilterValue
 ) => ageFilter === "any" || gender === ageFilter;
 
-const checkSearchFilter = (value: string, filter: string) =>
+export const checkSearchFilter = (value: string, filter: string) =>
   filter === "" || value.toLowerCase().includes(filter.toLowerCase());
-
-type GetFilteredPatients = {
-  patients: Patient[];
-  filters: {
-    gender: GenderFilterValue;
-    age: AgeFilterValue;
-    search: string;
-  };
-};
-
-export const getFilteredPatients = ({
-  patients,
-  filters,
-}: GetFilteredPatients) => {
-  const filteredPatients = patients.filter((patient) => {
-    const isSearchFilterPassed = checkSearchFilter(
-      patient.first_name,
-      filters.search
-    );
-
-    filters.search === "" ||
-      patient.first_name.toLowerCase().includes(filters.search.toLowerCase());
-
-    const isGenderFilterPassed = checkGenderFilter(
-      patient.gender,
-      filters.gender
-    );
-    const isAgeFilterPassed = checkAgeFilter(patient.age, filters.age);
-
-    return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
-  });
-
-  return { filteredPatients };
-};

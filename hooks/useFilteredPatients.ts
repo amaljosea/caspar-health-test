@@ -1,10 +1,7 @@
 import { useContext, useMemo, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
-import {
-  AgeFilterValue,
-  GenderFilterValue,
-  getFilteredPatients,
-} from "@/utils/filter";
+import { getFilteredPatients } from "@/utils/filter/getFilteredPatients";
+import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 
 export type FilterControls = {
   gender: GenderFilterValue;
