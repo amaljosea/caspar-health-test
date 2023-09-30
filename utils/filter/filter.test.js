@@ -1,7 +1,12 @@
-const sum = (a, b) => a + b;
+import { checkAgeFilter } from ".";
 
-describe("sum()", () => {
-  it("should return 5 if given 2 and 3 ", () => {
-    expect(sum(2, 3)).toBe(5);
+describe("checkAgeFilter", () => {
+  it("should return true", () => {
+    expect(
+      checkAgeFilter({
+        filter: "any",
+        value: 0,
+      })
+    ).toBe(true);
   });
 });
