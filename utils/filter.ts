@@ -27,7 +27,7 @@ export const ageFilterOptions: AgeFilterOption[] = [
   { label: " > 45", value: "above45" },
 ];
 
-const ageFilter = (age: number, ageFilter: AgeFilterValue) => {
+const checkAgeFilter = (age: number, ageFilter: AgeFilterValue) => {
   if (ageFilter === "any") {
     return true;
   }
@@ -61,7 +61,7 @@ export const getFilteredPatients = ({
       search === "" ||
       patient.first_name.toLowerCase().includes(search.toLowerCase());
     const isGenderFilterPassed = gender === "any" || patient.gender === gender;
-    const isAgeFilterPassed = ageFilter(patient.age, age);
+    const isAgeFilterPassed = checkAgeFilter(patient.age, age);
 
     return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
   });
