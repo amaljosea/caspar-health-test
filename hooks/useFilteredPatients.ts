@@ -3,6 +3,7 @@ import { PatientContext } from "@/context/PatientContext";
 import { getFilteredPatients } from "@/utils/filter/getFilteredPatients";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { SortValue } from "@/constants";
+import { getSortedPatients } from "@/utils/getSortedPatients";
 
 export type FilterControls = {
   gender: GenderFilterValue;
@@ -19,7 +20,7 @@ export const useFilteredPatients = () => {
   const [gender, setGender] = useState<GenderFilterValue>("any");
   const [age, setAge] = useState<AgeFilterValue>("any");
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("asc");
+  const [sort, setSort] = useState<SortValue>("asc");
 
   const { patients } = useContext(PatientContext);
 
@@ -28,9 +29,12 @@ export const useFilteredPatients = () => {
       patients,
       filters: { gender, age, search },
     });
-    const filteredAndSortedPatients = filteredPatients;
+    const filteredAndSortedPatients = getSortedPatients({
+      patients: filteredPatients,
+      sort,
+    });
     return { filteredAndSortedPatients };
-  }, [gender, age, search, patients]);
+  }, [gender, age, search, patients, sort]);
 
   return {
     patients: filteredAndSortedPatients,
