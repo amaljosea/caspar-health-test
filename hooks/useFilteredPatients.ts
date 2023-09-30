@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { PatientContext } from "@/context/PatientContext";
+import { Patient } from "..";
 
 export type FilterControls = {
   gender: string;
@@ -26,22 +27,41 @@ const checkAgeFilter = (age: number, ageFilter: string) => {
   return false;
 };
 
+type GetFilteredPatients = {
+  patients: Patient[];
+  filters: {
+    gender: string;
+    age: string;
+    search: string;
+  };
+};
+
+const getFilteredPatients = ({
+  patients,
+  filters: { gender, age, search },
+}: GetFilteredPatients) => {
+  const filteredPatients = patients.filter((patient) => {
+    const isSearchFilterPassed =
+      search === "" ||
+      patient.first_name.toLowerCase().includes(search.toLowerCase());
+    const isGenderFilterPassed = gender === "any" || patient.gender === gender;
+    const isAgeFilterPassed = checkAgeFilter(patient.age, age);
+
+    return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
+  });
+
+  return { filteredPatients };
+};
+
 export const useFilteredPatients = () => {
   const [gender, setGender] = useState("any");
   const [age, setAge] = useState("any");
   const [search, setSearch] = useState("");
   const { patients } = useContext(PatientContext);
 
-  const filteredPatients = patients.filter((patient) => {
-    const searchFilter =
-      search === "" ||
-      patient.first_name.toLowerCase().includes(search.toLowerCase());
-
-    const genderFilter = gender === "any" || patient.gender === gender;
-
-    const ageFilter = checkAgeFilter(patient.age, age);
-
-    return searchFilter && genderFilter && ageFilter;
+  const { filteredPatients } = getFilteredPatients({
+    patients,
+    filters: { gender, age, search },
   });
 
   return {
