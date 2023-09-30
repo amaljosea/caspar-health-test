@@ -3,7 +3,7 @@ export type Patient = {
   first_name: string;
   last_name: string;
   email: string;
-  gender: "Male" | "Female";
+  gender: string;
   age: number;
   avatar: string;
 };

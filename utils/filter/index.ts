@@ -38,7 +38,7 @@ export const checkGenderFilter = ({
   value,
   filter,
 }: {
-  value: GenderFilterValue;
+  value: string;
   filter: GenderFilterValue;
 }) => filter === "any" || value === filter;
 
