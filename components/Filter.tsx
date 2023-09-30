@@ -1,7 +1,9 @@
 import {
+  SortValue,
   ageFilterOptions,
   genderFilterOptions,
   simpleclassName,
+  sortOptions,
 } from "@/constants";
 import { Select } from "./Select";
 import { FilterControls } from "@/hooks/useFilteredPatients";
@@ -12,9 +14,16 @@ type FilterProps = {
 };
 
 export const Filter = ({ filterControls }: FilterProps) => {
-  const { gender, setGender, age, setAge, search, setSearch } = filterControls;
+  const { gender, setGender, age, setAge, search, setSearch, sort, setSort } =
+    filterControls;
   return (
     <div className={simpleclassName}>
+      <Select<SortValue>
+        label="Sort"
+        value={sort}
+        onChange={setSort}
+        options={sortOptions}
+      />
       <input
         placeholder="Search"
         value={search}
