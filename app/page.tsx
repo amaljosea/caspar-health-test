@@ -14,6 +14,7 @@ export default function Home() {
         {patients.map((patient) => (
           <PatientCard key={patient.patient_id} patient={patient} />
         ))}
+        {patients.length === 0 && <p>No patients for the applied filter</p>}
       </ul>
     </Layout>
   );
