@@ -9,7 +9,7 @@ import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { PatientContext } from "@/context/PatientContext";
 import { useContext } from "react";
 
-export const Filter = () => {
+export const PatientFilter = () => {
   const { patientFilterControls } = useContext(PatientContext);
   const {
     patientFilter: { sort, search, gender, age },

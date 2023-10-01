@@ -1,5 +1,5 @@
 "use client";
-import { Filter } from "@/components/Filter";
+import { PatientFilter } from "@/components/PatientFilter";
 import { Layout } from "@/components/Layout";
 import { PatientCard } from "@/components/PatientCard";
 import { useFilteredPatients } from "@/hooks/useFilteredPatients";
@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <Layout heading="Home">
-      <Filter />
+      <PatientFilter />
       <ul className="patient-list">
         {patients.map((patient) => (
           <PatientCard key={patient.patient_id} patient={patient} />
