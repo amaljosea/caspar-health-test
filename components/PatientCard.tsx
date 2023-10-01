@@ -13,8 +13,6 @@ export const PatientCard = ({ patient }: PatientCardProps) => {
         <p>
           {patient.first_name} {patient.last_name}
         </p>
-        <p>{patient.gender}</p>
-        <p>{patient.age}</p>
       </li>
     </Link>
   );
