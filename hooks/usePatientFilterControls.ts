@@ -2,12 +2,14 @@ import { SortValue } from "@/constants";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { useCallback, useMemo, useState } from "react";
 
-type PatientFilter = {
+export type PatientFilter = {
   gender: GenderFilterValue;
   age: AgeFilterValue;
   search: string;
   sort: SortValue;
 };
+
+export type PatientFilterKey = keyof PatientFilter;
 
 export type PatientFilterControls = {
   patientFilter: PatientFilter;

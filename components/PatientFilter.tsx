@@ -9,6 +9,7 @@ import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { PatientContext } from "@/context/PatientContext";
 import { useContext } from "react";
 import { PatientSearch } from "./PatientSearch";
+import { PatientFilterKey } from "@/hooks/usePatientFilterControls";
 
 export const PatientFilter = () => {
   const { patientFilterControls } = useContext(PatientContext);
@@ -17,28 +18,30 @@ export const PatientFilter = () => {
     changePatientFilter,
   } = patientFilterControls;
 
+  const change =
+    <T extends unknown>(type: PatientFilterKey) =>
+    (value: T) =>
+      changePatientFilter({ [type]: value });
+
   return (
     <div className="container">
       <Select<SortValue>
         label="Sort"
         value={sort}
-        onChange={(value) => changePatientFilter({ sort: value })}
+        onChange={change<SortValue>("sort")}
         options={sortOptions}
       />
-      <PatientSearch
-        value={search}
-        onChange={(value) => changePatientFilter({ search: value })}
-      />
+      <PatientSearch value={search} onChange={change<string>("search")} />
       <Select<GenderFilterValue>
         label="Gender"
         value={gender}
-        onChange={(value) => changePatientFilter({ gender: value })}
+        onChange={change<GenderFilterValue>("gender")}
         options={genderFilterOptions}
       />
       <Select<AgeFilterValue>
         label="Age"
         value={age}
-        onChange={(value) => changePatientFilter({ age: value })}
+        onChange={change<AgeFilterValue>("age")}
         options={ageFilterOptions}
       />
     </div>
