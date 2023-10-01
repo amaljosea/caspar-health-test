@@ -26,4 +26,9 @@ describe("PatientCard", () => {
     const link = getByRole("link");
     expect(link).toHaveAttribute("href", "/detail/1"); // Adjust the href as needed
   });
+
+  it("matches snapshot", () => {
+    const { asFragment } = render(<PatientCard patient={testPatient} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
