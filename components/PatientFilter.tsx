@@ -8,6 +8,7 @@ import { Select } from "./Select";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { PatientContext } from "@/context/PatientContext";
 import { useContext } from "react";
+import { PatientSearch } from "./PatientSearch";
 
 export const PatientFilter = () => {
   const { patientFilterControls } = useContext(PatientContext);
@@ -24,11 +25,9 @@ export const PatientFilter = () => {
         onChange={(value) => changePatientFilter({ sort: value })}
         options={sortOptions}
       />
-      <input
-        placeholder="Search"
+      <PatientSearch
         value={search}
-        onChange={(e) => changePatientFilter({ search: e.target.value })}
-        className="container"
+        onChange={(value) => changePatientFilter({ search: value })}
       />
       <Select<GenderFilterValue>
         label="Gender"

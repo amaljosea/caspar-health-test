@@ -2,16 +2,13 @@ import { useContext, useMemo } from "react";
 import { PatientContext } from "@/context/PatientContext";
 import { getFilteredPatients } from "@/utils/filter/getFilteredPatients";
 import { getSortedPatients } from "@/utils/getSortedPatients";
-import { useDebounce } from "./useDebounce";
 
 export const useFilteredPatients = () => {
   const { patients, patientFilterControls } = useContext(PatientContext);
 
   const {
-    patientFilter: { gender, age, search: liveSearch, sort },
+    patientFilter: { gender, age, search, sort },
   } = patientFilterControls;
-
-  const search = useDebounce<string>(liveSearch);
 
   const value = useMemo(() => {
     const { filteredPatients } = getFilteredPatients({
