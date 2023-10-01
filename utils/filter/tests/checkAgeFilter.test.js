@@ -1,4 +1,4 @@
-import { checkAgeFilter } from "./filters";
+import { checkAgeFilter } from "../filters";
 
 describe("checkAgeFilter", () => {
   const testCases = [

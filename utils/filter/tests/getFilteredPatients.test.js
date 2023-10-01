@@ -1,4 +1,4 @@
-import { getFilteredPatients } from "./getFilteredPatients"; // Import the function to be tested
+import { getFilteredPatients } from "../getFilteredPatients"; // Import the function to be tested
 
 describe("getFilteredPatients", () => {
   const patients = [

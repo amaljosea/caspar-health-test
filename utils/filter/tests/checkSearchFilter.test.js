@@ -1,4 +1,4 @@
-import { checkSearchFilter } from "./filters";
+import { checkSearchFilter } from "../filters";
 
 describe("checkSearchFilter", () => {
   const testCases = [
