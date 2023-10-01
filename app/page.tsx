@@ -7,8 +7,6 @@ import { useFilteredPatients } from "@/hooks/useFilteredPatients";
 export default function Home() {
   const { patients } = useFilteredPatients();
 
-  console.log("Render page");
-
   return (
     <PageLayout heading="Home">
       <PatientFilter />

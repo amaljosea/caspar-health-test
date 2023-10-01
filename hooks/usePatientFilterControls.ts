@@ -27,7 +27,6 @@ export const usePatientFilterControls = () => {
   const [patientFilter, setPatientFilter] =
     useState<PatientFilter>(defaultPatientFilter);
 
-  console.log("Render usePatientFilterControls");
   const changePatientFilter = useCallback(
     (change: Partial<PatientFilter>) => {
       setPatientFilter((prev) => ({
