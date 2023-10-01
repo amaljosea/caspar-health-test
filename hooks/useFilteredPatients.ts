@@ -11,7 +11,7 @@ export const useFilteredPatients = () => {
     patientFilter: { gender, age, search: liveSearch, sort },
   } = patientFilterControls;
 
-  const search = useDebounce(liveSearch);
+  const search = useDebounce<string>(liveSearch);
 
   const { filteredAndSortedPatients } = useMemo(() => {
     const { filteredPatients } = getFilteredPatients({

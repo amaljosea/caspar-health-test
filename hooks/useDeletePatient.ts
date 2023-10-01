@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import { PatientContext } from "@/context/PatientContext";
 import { confirmAlert } from "react-confirm-alert";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ export const useDeletePatient = ({ id }: UseDeletePatient) => {
   const { setPatients } = useContext(PatientContext);
   const router = useRouter();
 
-  const deletePatient = () => {
+  const deletePatient = useCallback(() => {
     confirmAlert({
       title: "Delete",
       message: `Are you sure you want to delete ${id}?`,
@@ -31,7 +31,7 @@ export const useDeletePatient = ({ id }: UseDeletePatient) => {
         },
       ],
     });
-  };
+  }, [id]);
 
   return {
     deletePatient,
