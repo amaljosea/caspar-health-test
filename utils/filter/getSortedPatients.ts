@@ -1,5 +1,5 @@
 import { SortValue } from "@/constants";
-import { Patient } from "..";
+import { Patient } from "../..";
 
 type GetSortedPatients = {
   patients: Patient[];
