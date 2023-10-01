@@ -11,7 +11,9 @@ export const PatientCard = ({ patient }: PatientCardProps) => {
     <Link key={patient.patient_id} href={`/detail/${patient.patient_id}`}>
       <li className={simpleclassName}>
         <p>{patient.patient_id}</p>
-        <p>{patient.first_name}</p>
+        <p>
+          {patient.first_name} {patient.last_name}
+        </p>
         <p>{patient.gender}</p>
         <p>{patient.age}</p>
       </li>
