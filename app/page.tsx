@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <Layout heading="Home">
       <Filter />
-      <ul>
+      <ul className="patient-list">
         {patients.map((patient) => (
           <PatientCard key={patient.patient_id} patient={patient} />
         ))}
