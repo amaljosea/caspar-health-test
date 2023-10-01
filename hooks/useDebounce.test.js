@@ -1,5 +1,5 @@
-import { useDebounce } from "./useDebounce"; // Import the hook to be tested
-import { renderHook, waitFor } from "@testing-library/react"; // <-- NOW
+import { useDebounce } from "./useDebounce";
+import { renderHook, waitFor } from "@testing-library/react";
 
 describe("useDebounce", () => {
   it("should return the initial value immediately", () => {
