@@ -22,7 +22,7 @@ type PatientContextType = {
 };
 
 export const PatientContext = createContext<PatientContextType>({
-  patients: [],
+  patients: patientsInitialData,
   setPatients: noop,
   patientFilterControls: {
     patientFilter: defaultPatientFilter,
