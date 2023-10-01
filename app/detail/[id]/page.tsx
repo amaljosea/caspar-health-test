@@ -1,5 +1,5 @@
 "use client";
-import { Layout } from "@/components/Layout";
+import { PageLayout } from "@/components/PageLayout";
 import { useDeletePatient } from "@/hooks/useDeletePatient";
 import { useSinglePatient } from "@/hooks/useSinglePatient";
 import Link from "next/link";
@@ -11,7 +11,7 @@ export default function Detail({ params: { id } }: DetailPageProps) {
   const { deletePatient } = useDeletePatient({ id: patient?.patient_id });
 
   return (
-    <Layout heading="Detail" nav={<Link href="/">Back</Link>}>
+    <PageLayout heading="Detail" nav={<Link href="/">Back</Link>}>
       {patient && (
         <>
           <img src={patient.avatar} />
@@ -25,6 +25,6 @@ export default function Detail({ params: { id } }: DetailPageProps) {
         </>
       )}
       {!patient && <p>Error: Patient not found!</p>}
-    </Layout>
+    </PageLayout>
   );
 }

@@ -13,14 +13,14 @@ export const ageFilterOptions: AgeFilterOption[] = [
   { label: " > 45", value: "above45" },
 ];
 
+export const sortOptions: SortOption[] = [
+  { label: "Asc", value: "asc" },
+  { label: "Desc", value: "desc" },
+];
+
 export type SortValue = "asc" | "desc";
 
 type SortOption = {
   label: string;
   value: SortValue;
 };
-
-export const sortOptions: SortOption[] = [
-  { label: "Asc", value: "asc" },
-  { label: "Desc", value: "desc" },
-];

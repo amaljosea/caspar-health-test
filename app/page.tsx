@@ -1,6 +1,6 @@
 "use client";
 import { PatientFilter } from "@/components/PatientFilter";
-import { Layout } from "@/components/Layout";
+import { PageLayout } from "@/components/PageLayout";
 import { PatientCard } from "@/components/PatientCard";
 import { useFilteredPatients } from "@/hooks/useFilteredPatients";
 
@@ -8,7 +8,7 @@ export default function Home() {
   const { patients } = useFilteredPatients();
 
   return (
-    <Layout heading="Home">
+    <PageLayout heading="Home">
       <PatientFilter />
       <ul className="patient-list">
         {patients.map((patient) => (
@@ -16,6 +16,6 @@ export default function Home() {
         ))}
         {patients.length === 0 && <p>No patients for the applied filter</p>}
       </ul>
-    </Layout>
+    </PageLayout>
   );
 }

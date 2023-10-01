@@ -1,11 +1,10 @@
 export type GenderFilterValue = "any" | "Male" | "Female";
+export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
 
 export type GenderFilterOption = {
   label: string;
   value: GenderFilterValue;
 };
-
-export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
 
 export type AgeFilterOption = {
   label: string;

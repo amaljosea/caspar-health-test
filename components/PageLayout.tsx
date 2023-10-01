@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
-type LayoutProps = {
+type PageLayoutProps = {
   children: ReactNode;
   heading: string;
   nav?: ReactNode;
 };
 
-export const Layout = ({ children, heading, nav }: LayoutProps) => {
+export const PageLayout = ({ children, heading, nav }: PageLayoutProps) => {
   return (
     <>
       <header className="container">
