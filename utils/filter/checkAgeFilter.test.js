@@ -1,4 +1,4 @@
-import { checkAgeFilter } from "."; // Import the function to be tested
+import { checkAgeFilter } from "./filters";
 
 describe("checkAgeFilter", () => {
   const testCases = [

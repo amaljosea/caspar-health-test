@@ -1,50 +1,42 @@
-export type GenderFilterValue = "any" | "Male" | "Female";
-export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
+import { Patient } from "@/index";
+import {
+  AgeFilterValue,
+  GenderFilterValue,
+  checkAgeFilter,
+  checkGenderFilter,
+  checkSearchFilter,
+} from "./filters";
 
-export type GenderFilterOption = {
-  label: string;
-  value: GenderFilterValue;
+type GetFilteredPatients = {
+  patients: Patient[];
+  filters: {
+    gender: GenderFilterValue;
+    age: AgeFilterValue;
+    search: string;
+  };
 };
 
-export type AgeFilterOption = {
-  label: string;
-  value: AgeFilterValue;
+export const getFilteredPatients = ({
+  patients,
+  filters,
+}: GetFilteredPatients) => {
+  const filteredPatients = patients.filter((patient) => {
+    const isSearchFilterPassed = checkSearchFilter({
+      filter: filters.search,
+      value: `${patient.first_name} ${patient.last_name} ${patient.patient_id}`,
+    });
+
+    const isGenderFilterPassed = checkGenderFilter({
+      filter: filters.gender,
+      value: patient.gender,
+    });
+    const isAgeFilterPassed = checkAgeFilter({
+      filter: filters.age,
+      value: patient.age,
+    });
+
+    return isSearchFilterPassed && isGenderFilterPassed && isAgeFilterPassed;
+  });
+
+  return { filteredPatients };
 };
-
-export const checkAgeFilter = ({
-  value,
-  filter,
-}: {
-  value: number;
-  filter: AgeFilterValue;
-}) => {
-  if (filter === "any") {
-    return true;
-  }
-  if (filter === "18to20") {
-    return value >= 18 && value <= 20;
-  }
-  if (filter === "31to45") {
-    return value >= 31 && value <= 45;
-  }
-  if (filter === "above45") {
-    return value > 45;
-  }
-  return false;
-};
-
-export const checkGenderFilter = ({
-  value,
-  filter,
-}: {
-  value: string;
-  filter: GenderFilterValue;
-}) => filter === "any" || value === filter;
-
-export const checkSearchFilter = ({
-  value,
-  filter,
-}: {
-  value: string;
-  filter: string;
-}) => filter === "" || value.toLowerCase().includes(filter.toLowerCase());

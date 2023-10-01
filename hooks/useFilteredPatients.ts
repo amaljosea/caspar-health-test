@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import { PatientContext } from "@/context/PatientContext";
-import { getFilteredPatients } from "@/utils/filter/getFilteredPatients";
+import { getFilteredPatients } from "@/utils/filter";
 import { getSortedPatients } from "@/utils/getSortedPatients";
 
 export const useFilteredPatients = () => {

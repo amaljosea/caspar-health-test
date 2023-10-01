@@ -1,4 +1,4 @@
-import { checkGenderFilter } from "."; // Import the function to be tested
+import { checkGenderFilter } from "./filters"; // Import the function to be tested
 
 describe("checkGenderFilter", () => {
   const testCases = [
