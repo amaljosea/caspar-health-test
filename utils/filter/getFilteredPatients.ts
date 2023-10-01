@@ -23,7 +23,7 @@ export const getFilteredPatients = ({
   const filteredPatients = patients.filter((patient) => {
     const isSearchFilterPassed = checkSearchFilter({
       filter: filters.search,
-      value: `${patient.first_name} ${patient.last_name}`,
+      value: `${patient.first_name} ${patient.last_name} ${patient.patient_id}`,
     });
 
     const isGenderFilterPassed = checkGenderFilter({
