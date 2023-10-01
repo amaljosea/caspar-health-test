@@ -1,15 +1,4 @@
-export type GenderFilterValue = "any" | "Male" | "Female";
-export type AgeFilterValue = "any" | "18to20" | "31to45" | "above45";
-
-export type GenderFilterOption = {
-  label: string;
-  value: GenderFilterValue;
-};
-
-export type AgeFilterOption = {
-  label: string;
-  value: AgeFilterValue;
-};
+import { AgeFilterValue, GenderFilterValue } from "./types";
 
 export const checkAgeFilter = ({
   value,

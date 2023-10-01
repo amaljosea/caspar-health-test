@@ -1,4 +1,4 @@
-import { AgeFilterOption, GenderFilterOption } from "@/utils/filter";
+import { AgeFilterOption, GenderFilterOption } from "@/utils/filter/types";
 
 export const genderFilterOptions: GenderFilterOption[] = [
   { label: "Any", value: "any" },

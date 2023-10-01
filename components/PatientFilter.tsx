@@ -5,11 +5,11 @@ import {
   sortOptions,
 } from "@/constants";
 import { Select } from "./Select";
-import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { PatientContext } from "@/context/PatientContext";
 import { useContext } from "react";
 import { PatientSearch } from "./PatientSearch";
 import { PatientFilterKey } from "@/hooks/usePatientFilterControls";
+import { AgeFilterValue, GenderFilterValue } from "@/utils/filter/types";
 
 export const PatientFilter = () => {
   const { patientFilterControls } = useContext(PatientContext);

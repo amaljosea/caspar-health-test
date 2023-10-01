@@ -1,5 +1,5 @@
 import { SortValue } from "@/constants";
-import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
+import { AgeFilterValue, GenderFilterValue } from "@/utils/filter/types";
 import { useCallback, useMemo, useState } from "react";
 
 export type PatientFilter = {

@@ -1,20 +1,9 @@
-import { Patient } from "@/index";
 import {
-  AgeFilterValue,
-  GenderFilterValue,
   checkAgeFilter,
   checkGenderFilter,
   checkSearchFilter,
 } from "./filters";
-
-type GetFilteredPatients = {
-  patients: Patient[];
-  filters: {
-    gender: GenderFilterValue;
-    age: AgeFilterValue;
-    search: string;
-  };
-};
+import { GetFilteredPatients } from "./types";
 
 export const getFilteredPatients = ({
   patients,
