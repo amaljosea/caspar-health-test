@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Patient } from "..";
-import { simpleclassName } from "@/constants";
 
 type PatientCardProps = {
   patient: Patient;
@@ -9,7 +8,7 @@ type PatientCardProps = {
 export const PatientCard = ({ patient }: PatientCardProps) => {
   return (
     <Link key={patient.patient_id} href={`/detail/${patient.patient_id}`}>
-      <li className={simpleclassName}>
+      <li className="container">
         <p>{patient.patient_id}</p>
         <p>
           {patient.first_name} {patient.last_name}

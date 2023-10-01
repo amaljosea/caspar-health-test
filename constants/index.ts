@@ -1,7 +1,5 @@
 import { AgeFilterOption, GenderFilterOption } from "@/utils/filter";
 
-export const simpleclassName = "custom-div";
-
 export const genderFilterOptions: GenderFilterOption[] = [
   { label: "Any", value: "any" },
   { label: "Male", value: "Male" },

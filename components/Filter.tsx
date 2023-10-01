@@ -2,7 +2,6 @@ import {
   SortValue,
   ageFilterOptions,
   genderFilterOptions,
-  simpleclassName,
   sortOptions,
 } from "@/constants";
 import { Select } from "./Select";
@@ -18,7 +17,7 @@ export const Filter = () => {
   } = patientFilterControls;
 
   return (
-    <div className={simpleclassName}>
+    <div className="container">
       <Select<SortValue>
         label="Sort"
         value={sort}
@@ -29,7 +28,7 @@ export const Filter = () => {
         placeholder="Search"
         value={search}
         onChange={(e) => changePatientFilter({ search: e.target.value })}
-        className={simpleclassName}
+        className="container"
       />
       <Select<GenderFilterValue>
         label="Gender"
