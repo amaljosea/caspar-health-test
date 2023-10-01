@@ -6,42 +6,40 @@ import {
   sortOptions,
 } from "@/constants";
 import { Select } from "./Select";
-import { FilterControls } from "@/hooks/useFilteredPatients";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
+import { PatientContext } from "@/context/PatientContext";
+import { useContext } from "react";
 
-type FilterProps = {
-  filterControls: FilterControls;
-};
-
-export const Filter = ({ filterControls }: FilterProps) => {
-  const { gender, setGender, age, setAge, search, setSearch, sort, setSort } =
-    filterControls;
+export const Filter = () => {
+  const { patientFilterControls } = useContext(PatientContext);
+  const {
+    patientFilter: { sort, search, gender, age },
+    changePatientFilter,
+  } = patientFilterControls;
   return (
     <div className={simpleclassName}>
       <Select<SortValue>
         label="Sort"
         value={sort}
-        onChange={setSort}
+        onChange={(value) => changePatientFilter({ sort: value })}
         options={sortOptions}
       />
       <input
         placeholder="Search"
         value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
+        onChange={(e) => changePatientFilter({ search: e.target.value })}
         className={simpleclassName}
       />
       <Select<GenderFilterValue>
         label="Gender"
         value={gender}
-        onChange={setGender}
+        onChange={(value) => changePatientFilter({ gender: value })}
         options={genderFilterOptions}
       />
       <Select<AgeFilterValue>
         label="Age"
         value={age}
-        onChange={setAge}
+        onChange={(value) => changePatientFilter({ age: value })}
         options={ageFilterOptions}
       />
     </div>

@@ -5,9 +5,11 @@ import { getSortedPatients } from "@/utils/getSortedPatients";
 import { useDebounce } from "./useDebounce";
 
 export const useFilteredPatients = () => {
-  const { patients, filterControls } = useContext(PatientContext);
+  const { patients, patientFilterControls } = useContext(PatientContext);
 
-  const { gender, age, search: liveSearch, sort } = filterControls;
+  const {
+    patientFilter: { gender, age, search: liveSearch, sort },
+  } = patientFilterControls;
 
   const search = useDebounce(liveSearch);
 
@@ -25,6 +27,5 @@ export const useFilteredPatients = () => {
 
   return {
     patients: filteredAndSortedPatients,
-    filterControls,
   };
 };
