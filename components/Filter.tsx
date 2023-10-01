@@ -9,6 +9,7 @@ import { Select } from "./Select";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
 import { PatientContext } from "@/context/PatientContext";
 import { useContext } from "react";
+import { useDeletePatient } from "@/hooks/useDeletePatient";
 
 export const Filter = () => {
   const { patientFilterControls } = useContext(PatientContext);
@@ -16,6 +17,7 @@ export const Filter = () => {
     patientFilter: { sort, search, gender, age },
     changePatientFilter,
   } = patientFilterControls;
+
   return (
     <div className={simpleclassName}>
       <Select<SortValue>

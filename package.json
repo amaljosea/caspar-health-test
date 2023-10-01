@@ -10,22 +10,25 @@
     "test": "jest"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "next": "latest",
     "react": "latest",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "6.1.2",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/jest": "29.5.5",
+    "@types/lodash": "^4.14.199",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "jest": "^29.7.0",
-    "typescript": "latest",
-    "@testing-library/jest-dom": "6.1.2",
-    "@testing-library/react": "14.0.0",
-    "@testing-library/user-event": "14.4.3",
-    "@types/jest": "29.5.5",
-    "jest-environment-jsdom": "29.6.4"
+    "jest-environment-jsdom": "29.6.4",
+    "typescript": "latest"
   }
 }

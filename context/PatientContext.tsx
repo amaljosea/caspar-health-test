@@ -1,5 +1,12 @@
 "use client";
-import { ReactNode, createContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useState,
+} from "react";
+import { noop } from "lodash";
 import patientsInitialData from "../mock_data.json";
 import { Patient } from "..";
 import {
@@ -11,13 +18,15 @@ import {
 type PatientContextType = {
   patients: Patient[];
   patientFilterControls: PatientFilterControls;
+  setPatients: Dispatch<SetStateAction<Patient[]>>;
 };
 
 export const PatientContext = createContext<PatientContextType>({
   patients: [],
+  setPatients: noop,
   patientFilterControls: {
     patientFilter: defaultPatientFilter,
-    changePatientFilter: () => {},
+    changePatientFilter: noop,
   },
 });
 
@@ -28,7 +37,7 @@ type PatientContextProviderProps = {
 export const PatientContextProvider = ({
   children,
 }: PatientContextProviderProps) => {
-  const [patients] = useState(patientsInitialData);
+  const [patients, setPatients] = useState(patientsInitialData);
   const patientFilterControls = usePatientFilterControls();
 
   return (
@@ -36,6 +45,7 @@ export const PatientContextProvider = ({
       value={{
         patients,
         patientFilterControls,
+        setPatients,
       }}
     >
       {children}
