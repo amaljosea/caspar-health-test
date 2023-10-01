@@ -1,5 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
 import { useDebounce } from "./useDebounce"; // Import the hook to be tested
+import { renderHook, waitFor } from "@testing-library/react"; // <-- NOW
 
 describe("useDebounce", () => {
   it("should return the initial value immediately", () => {
@@ -8,7 +8,7 @@ describe("useDebounce", () => {
   });
 
   it("should return the updated value after the specified delay", async () => {
-    const { result, rerender, waitForNextUpdate } = renderHook(
+    const { result, rerender } = renderHook(
       ({ value, delay }) => useDebounce(value, delay),
       {
         initialProps: {
@@ -23,10 +23,9 @@ describe("useDebounce", () => {
 
     // Update the value and wait for the debounce
     rerender({ value: "updatedValue", delay: 500 });
-    await waitForNextUpdate();
 
     // Should have the updated value after the delay
-    expect(result.current).toBe("updatedValue");
+    await waitFor(() => expect(result.current).toBe("updatedValue"));
   });
 
   it("should clear the timeout on unmount", async () => {
