@@ -1,6 +1,6 @@
 import { SortValue } from "@/constants";
 import { AgeFilterValue, GenderFilterValue } from "@/utils/filter";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 type PatientFilter = {
   gender: GenderFilterValue;
@@ -25,15 +25,22 @@ export const usePatientFilterControls = () => {
   const [patientFilter, setPatientFilter] =
     useState<PatientFilter>(defaultPatientFilter);
 
-  const changePatientFilter = useCallback((change: Partial<PatientFilter>) => {
-    setPatientFilter((prev) => ({
-      ...prev,
-      ...change,
-    }));
-  }, []);
+  const changePatientFilter = useCallback(
+    (change: Partial<PatientFilter>) => {
+      setPatientFilter((prev) => ({
+        ...prev,
+        ...change,
+      }));
+    },
+    [setPatientFilter]
+  );
 
-  return {
-    patientFilter,
-    changePatientFilter,
-  };
+  const value = useMemo(
+    () => ({
+      patientFilter,
+      changePatientFilter,
+    }),
+    [patientFilter, changePatientFilter]
+  );
+  return value;
 };

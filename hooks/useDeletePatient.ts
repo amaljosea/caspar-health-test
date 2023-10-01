@@ -33,7 +33,5 @@ export const useDeletePatient = ({ id }: UseDeletePatient) => {
     });
   }, [id]);
 
-  return {
-    deletePatient,
-  };
+  return deletePatient;
 };

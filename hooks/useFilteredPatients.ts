@@ -13,7 +13,7 @@ export const useFilteredPatients = () => {
 
   const search = useDebounce<string>(liveSearch);
 
-  const { filteredAndSortedPatients } = useMemo(() => {
+  const value = useMemo(() => {
     const { filteredPatients } = getFilteredPatients({
       patients,
       filters: { gender, age, search },
@@ -22,10 +22,8 @@ export const useFilteredPatients = () => {
       patients: filteredPatients,
       sort,
     });
-    return { filteredAndSortedPatients };
+    return { patients: filteredAndSortedPatients };
   }, [gender, age, search, patients, sort]);
 
-  return {
-    patients: filteredAndSortedPatients,
-  };
+  return value;
 };

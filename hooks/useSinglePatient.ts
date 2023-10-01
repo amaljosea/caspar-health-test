@@ -12,7 +12,5 @@ export const useSinglePatient = ({ id }: UseSinglePatient) => {
     () => patients.find((i) => i.patient_id.toString() === id),
     [id, patients]
   );
-  return {
-    patient,
-  };
+  return patient;
 };

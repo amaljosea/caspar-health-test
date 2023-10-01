@@ -7,8 +7,8 @@ import Link from "next/link";
 type DetailPageProps = { params: { id: string } };
 
 export default function Detail({ params: { id } }: DetailPageProps) {
-  const { patient } = useSinglePatient({ id: id });
-  const { deletePatient } = useDeletePatient({ id: patient?.patient_id });
+  const patient = useSinglePatient({ id: id });
+  const deletePatient = useDeletePatient({ id: patient?.patient_id });
 
   return (
     <PageLayout heading="Detail" nav={<Link href="/">Back</Link>}>

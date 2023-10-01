@@ -4,6 +4,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useMemo,
   useState,
 } from "react";
 import { noop } from "lodash";
@@ -40,15 +41,16 @@ export const PatientContextProvider = ({
   const [patients, setPatients] = useState(patientsInitialData);
   const patientFilterControls = usePatientFilterControls();
 
+  const value = useMemo(
+    () => ({
+      patients,
+      patientFilterControls,
+      setPatients,
+    }),
+    [patients, patientFilterControls, setPatients]
+  );
+
   return (
-    <PatientContext.Provider
-      value={{
-        patients,
-        patientFilterControls,
-        setPatients,
-      }}
-    >
-      {children}
-    </PatientContext.Provider>
+    <PatientContext.Provider value={value}>{children}</PatientContext.Provider>
   );
 };
