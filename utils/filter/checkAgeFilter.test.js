@@ -1,38 +1,33 @@
-import { checkAgeFilter } from ".";
-
-const testConfig = [
-  // filter, value, result
-  // Test for 'any'
-  ["any", 0, true],
-  // Tests for '18to20'
-  ["18to20", 1, false],
-  ["18to20", 17, false],
-  ["18to20", 18, true],
-  ["18to20", 19, true],
-  ["18to20", 20, true],
-  ["18to20", 21, false],
-  // Tests for '31to45'
-  ["31to45", 30, false],
-  ["31to45", 31, true],
-  ["31to45", 32, true],
-  ["31to45", 45, true],
-  ["31to45", 46, false],
-  // Tests for 'above45'
-  ["above45", 40, false],
-  ["above45", 45, false],
-  ["above45", 46, true],
-  ["above45", 100, true],
-];
+import { checkAgeFilter } from "."; // Import the function to be tested
 
 describe("checkAgeFilter", () => {
-  it("checkAgeFilter should work as expected for all the edge cases", () => {
-    testConfig.forEach((config) => {
+  const testCases = [
+    { value: 25, filter: "any", expected: true },
+    { value: 18, filter: "18to20", expected: true },
+    { value: 20, filter: "18to20", expected: true },
+    { value: 17, filter: "18to20", expected: false },
+    { value: 21, filter: "18to20", expected: false },
+    { value: 31, filter: "31to45", expected: true },
+    { value: 45, filter: "31to45", expected: true },
+    { value: 30, filter: "31to45", expected: false },
+    { value: 46, filter: "31to45", expected: false },
+    { value: 46, filter: "above45", expected: true },
+    { value: 100, filter: "above45", expected: true },
+    { value: 45, filter: "above45", expected: false },
+    { value: 44, filter: "above45", expected: false },
+    { value: 25, filter: "unknown", expected: false },
+    { value: 18.5, filter: "18to20", expected: true },
+    { value: -10, filter: "18to20", expected: false },
+    { value: -1, filter: "31to45", expected: false },
+    { value: NaN, filter: "18to20", expected: false },
+    { value: undefined, filter: "18to20", expected: false },
+  ];
+
+  testCases.forEach((testCase) => {
+    it(`should return ${testCase.expected} for value=${testCase.value} and filter=${testCase.filter}`, () => {
       expect(
-        checkAgeFilter({
-          filter: config[0],
-          value: config[1],
-        })
-      ).toBe(config[2]);
+        checkAgeFilter({ value: testCase.value, filter: testCase.filter })
+      ).toBe(testCase.expected);
     });
   });
 });
