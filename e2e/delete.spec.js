@@ -11,4 +11,8 @@ test("should navigate to the detail page on patient click", async ({
   await expect(page).toHaveURL("/detail/46");
   // The new page should contain an h1 with "Detail"
   await expect(page.locator("h1")).toContainText("Detail");
+  await expect(page.locator("button")).toContainText("Delete");
+  await page.getByText("Delete").click();
+  await page.getByText("Yes").click();
+  await expect(page).toHaveURL("/");
 });
